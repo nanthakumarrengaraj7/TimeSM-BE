@@ -7,6 +7,7 @@ const authRoutes = require('./routes/authRoute');
 const userRoutes = require('./routes/userRoute');
 const projectRoutes = require('./routes/projectRoute');
 const timelogRoutes = require('./routes/timelogRoutes');
+const dashboardRoutes = require('./routes/dashboardRoutes');
 const app = express();
 const port = 3000;
 
@@ -21,7 +22,8 @@ mongoose.connect('mongodb://localhost:27017/projectmanagement')
 app.use('/api/auth', authRoutes);
 app.use('/api/user', authendication, userRoutes);
 app.use('/api/project', authendication, projectRoutes);
-app.use('/api/timelog', timelogRoutes);
+app.use('/api/timelog', authendication, timelogRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 app.get((req, res) => {
     res.status(404).send('Not found');
