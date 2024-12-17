@@ -14,7 +14,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/projectmanagement')
+mongoose.connect('mongodb://localhost:27017/crud')
     .then(() => console.log('Db Connected'))
     .catch(() => console.log('DB not connected'));
 

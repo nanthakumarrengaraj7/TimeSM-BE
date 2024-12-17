@@ -1,5 +1,6 @@
 const userService = require('../services/userService');
 const mongoose = require('mongoose');
+const emailService = require('../services/mailService');
 
 const getUser = async (req, res) => {
   try {
@@ -14,6 +15,8 @@ const addUser = async (req, res) => {
   try {
     const data = await userService.create(req.body);
     if(data){
+      const { email, username, password } = req.body;
+      await sendCredentials(email, username, password);
       res.status(200).json({ message: 'Created', data: data });
     } else {
       res.status(500).json({ message: 'User not created' });
@@ -61,5 +64,19 @@ const getUserById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+const sendCredentials = async(email, username, password)  => {
+
+    if (!email || !username || !password) {
+      return res.status(400).json({ error: 'Missing required fields: to, username, or password' });
+    }
+
+    try {
+      await emailService.sendCredentials(email, username, password);
+      return 'Credentials sent successfully';
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to send credentials', details: error.message });
+    }
+  }
 
 module.exports = { getUser, addUser, editUser, deleteUser, getUserById }
