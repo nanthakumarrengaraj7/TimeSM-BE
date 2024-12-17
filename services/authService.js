@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 
 // Register Logic
@@ -9,8 +8,7 @@ const registerUser = async (username, email, password, usertype) => {
         throw new Error('User already exists');
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({username, email, password: hashedPassword, usertype});
+    const newUser = new User({username, email, password , usertype});
 
     await newUser.save();
     return newUser;

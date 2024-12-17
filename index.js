@@ -14,7 +14,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/crud')
+mongoose.connect('mongodb://localhost:27017/projectmanagement')
     .then(() => console.log('Db Connected'))
     .catch(() => console.log('DB not connected'));
 
@@ -23,7 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user', authendication, userRoutes);
 app.use('/api/project', authendication, projectRoutes);
 app.use('/api/timelog', authendication, timelogRoutes);
-app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/dashboard', authendication, dashboardRoutes);
 
 app.get((req, res) => {
     res.status(404).send('Not found');

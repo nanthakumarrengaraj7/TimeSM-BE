@@ -21,7 +21,11 @@ userSchema.pre('save', async function(next) {
 
 userSchema.methods.comparePassword = async function (password) {
     const isvalid = await bcrypt.compare(password, this.password);
+
     return isvalid;
 };
 
 module.exports = mongoose.model('User', userSchema);
+
+
+

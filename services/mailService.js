@@ -14,7 +14,6 @@ class EmailService {
 
   // Method to send username and password
   async sendCredentials(to, username, password) {
-    console.log(to, username, password);
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to, to,

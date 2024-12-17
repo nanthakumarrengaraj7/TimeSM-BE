@@ -79,4 +79,4 @@ const sendCredentials = async(email, username, password)  => {
     }
   }
 
-module.exports = { getUser, addUser, editUser, deleteUser, getUserById }
+module.exports = { getUser, addUser, editUser, deleteUser, getUserById };

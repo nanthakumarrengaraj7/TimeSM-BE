@@ -1,6 +1,5 @@
 const authService = require('../services/authService');
 const token = require('../authendication/generateToken');
-const User = require('../models/userModel');
 
 // register
 const register = async (req, res) => {
