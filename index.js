@@ -15,7 +15,7 @@ const port = 3000|| process.env.port;
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/projectmanagement')
+mongoose.connect('mongodb+srv://timesheetmanagement:nanthu@timesheetmanagement.uenb68w.mongodb.net/?appName=timeSheetManagement')
     .then(() => console.log('Db Connected'))
     .catch(() => console.log('DB not connected'));
 
