@@ -41,8 +41,7 @@ const updateProject = async(id, data) => {
   return updateData;
 };
 
-// searchProject
-// filterProject
+
 // deleteProjectById
 const deleteProjectById = async(id) => {
   const data = await Project.findByIdAndDelete(id);

@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+  const authHeader = req.headers['authorization'];//header
+  const token = authHeader && authHeader.split(' ')[1];//Bearer <123*%$%>
   // const token = req.headers['authorization'];
   if (!token) return res.status(403).json({ message: 'Token is required' });
 

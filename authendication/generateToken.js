@@ -9,7 +9,7 @@ const generateToken = async (user) => {
       usertype: user.usertype
     };
     
-    const accessToken = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '8h' });
+    const accessToken = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '24h' });
     
     return accessToken;
 };
